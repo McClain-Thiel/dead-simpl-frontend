@@ -40,3 +40,5 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 Triggering CI/CD pipeline.
+
+Triggering CI/CD pipeline again to fix Artifact Registry.
