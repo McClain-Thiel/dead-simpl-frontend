@@ -33,7 +33,3 @@ timeout: '1200s'
 options:
   logging: CLOUD_LOGGING_ONLY
 
-substitutions:
-  _PROJECT_ID: 'halogen-eon-470613-h3'
-  _COMMIT_SHA: ' '
-  _BRANCH_NAME: 'staging'
