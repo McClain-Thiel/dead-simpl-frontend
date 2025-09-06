@@ -44,3 +44,5 @@ Triggering CI/CD pipeline.
 Triggering CI/CD pipeline again to fix Artifact Registry.
 
 Triggering rebuild after fixing Firebase secret access.
+
+Testing unified image registry and tag configuration.
