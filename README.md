@@ -1,6 +1,5 @@
 # DeadSimpleML Frontend
 
-
 This is a [Next.js](https://nextjs.org) project for the DeadSimpleML frontend application.
 
 ## Getting Started
