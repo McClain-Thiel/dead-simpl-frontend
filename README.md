@@ -42,3 +42,5 @@ To learn more about Next.js, take a look at the following resources:
 Triggering CI/CD pipeline.
 
 Triggering CI/CD pipeline again to fix Artifact Registry.
+
+Triggering rebuild after fixing Firebase secret access.
