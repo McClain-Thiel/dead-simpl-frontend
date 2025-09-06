@@ -28,7 +28,8 @@ images:
 # Build timeout
 timeout: '1200s'
 
-
+substitutions:
+  _PROJECT_ID: 'halogen-eon-470613-h3'
 
 options:
   logging: CLOUD_LOGGING_ONLY
