@@ -1,21 +1,21 @@
 steps:
-  # Build the Docker image
+  # Build the Docker image with branch-specific tag
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:latest'
+      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${BRANCH_NAME}'
       - '.'
 
-  # Push the Docker image to Artifact Registry
+  # Push the tagged image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:latest'
+      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${BRANCH_NAME}'
 
 # Store build artifacts
 images:
-  - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:latest'
+  - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${BRANCH_NAME}'
 
 # Build timeout
 timeout: '1200s'
