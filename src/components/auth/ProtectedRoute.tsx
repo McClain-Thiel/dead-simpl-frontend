@@ -70,4 +70,16 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
         <div className="max-w-md w-full space-y-4">
           <Alert variant="destructive">
             <AlertDescription>
-              {authError || 'You are not authorized to access
+              {authError || 'You are not authorized to access this application.'}
+            </AlertDescription>
+          </Alert>
+          <Button onClick={handleSignOut} variant="outline" className="w-full">
+            Sign out
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  return <>{children}</>;
+}
