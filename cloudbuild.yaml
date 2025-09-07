@@ -4,14 +4,14 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${BRANCH_NAME}'
+      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${SHORT_SHA}'
       - '.'
 
   # Push the tagged image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${BRANCH_NAME}'
+      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${SHORT_SHA}'
 
   # Create a new Cloud Deploy release
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -19,15 +19,15 @@ steps:
       - 'deploy'
       - 'releases'
       - 'create'
-      - 'frontend-release-\${SHORT_SHA}'
+      - 'frontend-release-${SHORT_SHA}'
       - '--delivery-pipeline=frontend-pipeline'
       - '--region=us-central1'
       - '--source=.'
-      - '--images=dead-simpl-frontend=us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${BRANCH_NAME}'
+      - '--images=dead-simpl-frontend=us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${SHORT_SHA}'
 
 # Store build artifacts
 images:
-  - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${BRANCH_NAME}'
+  - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/dead-simpl-frontend/dead-simpl-frontend:${SHORT_SHA}'
 
 # Build timeout
 timeout: '1200s'
@@ -36,5 +36,5 @@ substitutions:
   _PROJECT_ID: 'halogen-eon-470613-h3'
 
 options:
-  logging: CLOUD_LOGGING_ONLY
+  logging: GCS_ONLY
 

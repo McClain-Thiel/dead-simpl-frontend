@@ -15,4 +15,4 @@ deploy:
       valuesFiles:
       - ../helm/frontend/values.yaml
       setValues:
-        image.tag: latest
+        image.tag: $SHORT_SHA
