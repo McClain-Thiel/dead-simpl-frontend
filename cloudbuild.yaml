@@ -9,11 +9,11 @@ steps:
     args:
       - -c
       - |
-        if [ -n "$BRANCH_NAME" ]; then \
-          SAFE_TAG=$(echo "$BRANCH_NAME" | tr '/_' '--' | tr -cd '[:alnum:].-'); \
+        if [ -n "$$BRANCH_NAME" ]; then \
+          SAFE_TAG=$(echo "$$BRANCH_NAME" | tr '/_' '--' | tr -cd '[:alnum:].-'); \
           docker tag us-central1-docker.pkg.dev/$PROJECT_ID/dead-simpl-frontend/dead-simpl-frontend:$SHORT_SHA \
-                     us-central1-docker.pkg.dev/$PROJECT_ID/dead-simpl-frontend/dead-simpl-frontend:$SAFE_TAG; \
-          docker push us-central1-docker.pkg.dev/$PROJECT_ID/dead-simpl-frontend/dead-simpl-frontend:$SAFE_TAG; \
+                     us-central1-docker.pkg.dev/$PROJECT_ID/dead-simpl-frontend/dead-simpl-frontend:"$$SAFE_TAG"; \
+          docker push us-central1-docker.pkg.dev/$PROJECT_ID/dead-simpl-frontend/dead-simpl-frontend:"$$SAFE_TAG"; \
         fi
 
   # Push the commit-tagged image to Artifact Registry
